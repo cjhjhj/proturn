@@ -130,7 +130,7 @@ setMethod(
         rsq <- NA
       }
       rsq <- 1 - var(residuals(fit))/var(x)
-      ci <- try(confint(fit, "kd"), silent = TRUE)
+      ci <- try(confint(profile(fit), "kd"), silent = TRUE)
       if (inherits(ci, "try-error"))
         ci <- c(NA, NA)
       res <- c(res, ci, mse, rsq)
