@@ -131,7 +131,7 @@ setMethod(
       }
       rsq <- 1 - var(residuals(fit))/var(x)
       # ci <- try(confint(profile(fit), "kd"), silent = TRUE)
-      ci <- suppressMessages(confint(profile(fit), "kd"))
+      ci <- suppressMessages(try(confint(profile(fit), "kd"), silent = TRUE))
       if (inherits(ci, "try-error"))
         ci <- c(NA, NA)
       res <- c(res, ci, mse, rsq)
